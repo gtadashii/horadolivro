@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { createServer } from "http";
 import path from "path";
 
@@ -18,6 +19,8 @@ app.get("/", (request, response) => {
 const http = createServer(app); // Criando o protocolo HTTP
 
 app.use(express.json());
+
+app.use(cors({ origin: '*', credentials: true }));
 
 app.use(routes);
 
