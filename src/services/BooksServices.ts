@@ -11,13 +11,13 @@ class BooksService {
   }
 
   async getBooks(search_value: string) {
-    const query = search_value.replace(" ", "+").toLowerCase();
+    const valor_procurado = search_value;
+
+    const query = valor_procurado.replace(" ", "+").toLowerCase();
     const { data } = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${this.apiKey}`);
-    const { items } = data;
+    return data;
 
-    return items;
   }
-
 }
 
 export { BooksService };
